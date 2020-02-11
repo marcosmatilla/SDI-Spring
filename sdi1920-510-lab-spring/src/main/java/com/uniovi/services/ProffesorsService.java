@@ -1,46 +1,36 @@
 package com.uniovi.services;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.uniovi.entities.Proffesor;
+import com.uniovi.repositories.ProffesorsRepository;
 
 @Service
 public class ProffesorsService {
-	private List<Proffesor> proffesorList = new LinkedList<Proffesor>();
-
-	@PostConstruct
-	public void init() {
-		proffesorList.add(new Proffesor("1", "Lucas", "Vazquez", "Matemáticas"));
-		proffesorList.add(new Proffesor("2", "Enrique", "Casemiro", "Lengua"));
-	}
-
+	@Autowired
+	private ProffesorsRepository proffesorsRepository;
+	
 	public List<Proffesor> getProffesors() {
-		return proffesorList;
+		List<Proffesor> proffesors = new ArrayList<Proffesor>();
+		proffesorsRepository.findAll().forEach(proffesors::add);
+		return proffesors;
 	}
 
-	public Proffesor getProffesor(String dni) {
-		return proffesorList.stream().filter(x -> x.getDni().equals(dni)).findFirst().get();
+	public Proffesor getProffesor(Long dni) {
+		return proffesorsRepository.findById(dni).get();
 	}
 
 	public void addProffesor(Proffesor proffesor) {
-		if (proffesor.getDni() == null) {
-			proffesor.setDni("");
-		}
-		proffesorList.add(proffesor);
+		proffesorsRepository.save(proffesor);
 	}
 
-	public void deleteProffesor(String dni) {
-		proffesorList.removeIf(x -> x.getDni().equals(dni));
+	public void deleteProffesor(Long dni) {
+		proffesorsRepository.deleteById(dni);
 	}
 
-	public void updateProffesor(Proffesor proffesor) {
-		if (getProffesor(proffesor.getDni()) != null) {
-			deleteProffesor(proffesor.getDni());
-			addProffesor(proffesor);
-		}
-	}
 
 }

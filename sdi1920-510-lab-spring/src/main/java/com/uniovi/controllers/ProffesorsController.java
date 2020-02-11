@@ -27,19 +27,13 @@ public class ProffesorsController{
 		return "Proffesor added";
 	}
 	
-	@RequestMapping(value = "/proffesor/edit/{dni}", method=RequestMethod.POST)
-	public String editProffesor(@ModelAttribute Proffesor proffesor) {
-		proffesorService.updateProffesor(proffesor);
-		return "Proffesor edited";
-	}
-	
 	@RequestMapping("/proffesor/details/{dni}" )
-	public String getDetail(@PathVariable String dni) {
+	public String getDetail(@PathVariable Long dni) {
 		return proffesorService.getProffesor(dni).toString();
 	}
 	
 	@RequestMapping("/proffesor/delete/{dni}" )
-	public String deleteProffesor(@PathVariable String dni) {
+	public String deleteProffesor(@PathVariable Long dni) {
 		proffesorService.deleteProffesor(dni);
 		return "Proffesor deleted";
 	}

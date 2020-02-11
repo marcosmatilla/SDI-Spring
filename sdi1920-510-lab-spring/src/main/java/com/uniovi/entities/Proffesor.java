@@ -1,12 +1,17 @@
 package com.uniovi.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Proffesor {
-	private String dni;
+	@Id
+	private Long dni;
 	private String nombre;
 	private String apellido;
 	private String categoria;
 
-	public Proffesor(String dni, String nombre, String apellido, String categoria) {
+	public Proffesor(Long dni, String nombre, String apellido, String categoria) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -24,11 +29,11 @@ public class Proffesor {
 				+ "]";
 	}
 
-	public String getDni() {
+	public Long getDni() {
 		return dni;
 	}
 
-	public void setDni(String dni) {
+	public void setDni(Long dni) {
 		this.dni = dni;
 	}
 
