@@ -35,7 +35,6 @@ public class UsersService {
 	}
 
 	public User getUserByDni(String dni) {
-		
 		return usersRepository.findByDni(dni);
 	}
 
