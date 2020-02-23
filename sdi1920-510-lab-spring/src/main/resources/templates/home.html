@@ -6,9 +6,9 @@
 	<div class="container" style="text-align: center">
 		<h2 th:text="#{welcome.message}"></h2>
 		<h3 th:text="#{welcome.privateZone}"></h3>
+		<p th:text="#{welcome.userAuthentication}"> </p>
 		<p>
-			<span th:text="#{welcome.userAuthentication}">:</span> <b th:inline="text">
-				[[${#httpServletRequest.remoteUser}]] </b>
+			<span sec:authentication="principal.username"  th:inline="text"></span>
 		</p>
 		<p th:text="#{welcome.userMarks}"></p>
 		<div class="table-responsive">
