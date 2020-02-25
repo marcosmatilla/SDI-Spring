@@ -65,8 +65,11 @@
 						<td th:text="${proffesor.nombre}"></td>
 						<td th:text="${proffesor.apellido}"></td>
 						<td th:text="${proffesor.categoria}"></td>
-						<td><a th:href="${'/proffesor/details/' + proffesor.dni}">detalles</a></td>
-						<td><a th:href="${'/proffesor/delete/' + proffesor.dni}">eliminar</a></td>
+						<td><a sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_PROFESSOR')"
+							th:href="${'/proffesor/details/' + proffesor.dni}">detalles</a></td>
+						<td><a sec:authorize="hasRole('ROLE_ADMIN')"
+							th:href="${'/proffesor/delete/' + proffesor.dni}">eliminar</a></td>
+							
 					</tr>
 				</tbody>
 			</table>
