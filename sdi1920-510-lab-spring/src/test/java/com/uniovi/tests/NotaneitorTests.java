@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.uniovi.tests.pageobjects.PO_HomeView;
+import com.uniovi.tests.pageobjects.PO_LoginView;
 import com.uniovi.tests.pageobjects.PO_Properties;
 import com.uniovi.tests.pageobjects.PO_RegisterView;
 import com.uniovi.tests.pageobjects.PO_View;
@@ -119,17 +120,69 @@ public class NotaneitorTests {
 		PO_RegisterView.checkKey(driver, "Error.signup.name.length", PO_Properties.getSPANISH());
 		// Rellenamos el formulario.
 		PO_RegisterView.fillForm(driver, "99999990B", "Josefo", "Per", "77777", "77777");
-		//Comprobamos el errror de Apellido corto
+		// Comprobamos el errror de Apellido corto
 		PO_RegisterView.checkKey(driver, "Error.signup.lastName.length", PO_Properties.getSPANISH());
-		//Rellenamos el formulario
+		// Rellenamos el formulario
 		PO_RegisterView.fillForm(driver, "99999990B", "Josefo", "Perez", "777", "777");
-		//Comprobamos el errror de contraseña corto
+		// Comprobamos el errror de contraseña corto
 		PO_RegisterView.checkKey(driver, "Error.signup.password.length", PO_Properties.getSPANISH());
-		//Rellenamos el formulario
+		// Rellenamos el formulario
 		PO_RegisterView.fillForm(driver, "99999990B", "Josefo", "Perez", "77777", "77778");
-		//Comprobamos el errror de contraseña no coincide
+		// Comprobamos el errror de contraseña no coincide
 		PO_RegisterView.checkKey(driver, "Error.signup.passwordConfirm.coincidence", PO_Properties.getSPANISH());
-		
+
 	}
 
+	// PRN. Loguearse con exito desde el ROl de Usuario, 99999990D, 123456
+	@Test
+	public void PR07() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999990A", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+
+	@Test
+	public void PR08() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999993D", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+
+	@Test
+	public void PR09() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999988F", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+
+	@Test
+	public void PR10() {
+		// Vamos al formulario de registro
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario.
+		PO_LoginView.fillForm(driver, "9999999A", "77777");
+		PO_View.checkElement(driver, "text", "Identifícate");
+	}
+
+	@Test
+	public void PR11() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999990A", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+		//Desconexión 
+		PO_HomeView.clickOption(driver, "logout", "text", "Identifícate");
+
+	}
 }
