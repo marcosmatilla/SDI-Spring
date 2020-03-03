@@ -25,6 +25,15 @@ public class PO_PrivateView extends PO_NavView {
 		driver.findElement(boton).click();
 	}
 
+	static public void ex1session5(WebDriver driver, String dni, String text ) {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, dni, "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", text);
+	}
+
 	static public void fillProffesorAdd(WebDriver driver, String dnip, String namep, String surnamep, String catp) {
 		// Esperamos 5 segundo a que carge el DOM porque en algunos equipos falla
 		WebElement dni = driver.findElement(By.name("dni"));
