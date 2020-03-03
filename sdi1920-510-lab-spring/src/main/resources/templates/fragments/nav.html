@@ -29,6 +29,13 @@
 						<li><a href="/user/add"><span th:text="#{user.addUser}"></span></a></li>
 						<li><a href="/user/list"><span th:text="#{user.seeUser}"></span></a></li>
 					</ul></li>
+					<li id="proffesor-menu" class="dropdown"
+					sec:authorize="hasRole('ROLE_ADMIN')"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#">Gestión Profesores<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/proffesor/add">Añadir Profesor</a></li>
+						<li><a href="/proffesor/list">Ver Profesores</a></li>
+					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href=" #"

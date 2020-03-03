@@ -24,4 +24,27 @@ public class PO_PrivateView extends PO_NavView {
 		By boton = By.className("btn");
 		driver.findElement(boton).click();
 	}
+
+	static public void fillProffesorAdd(WebDriver driver, String dnip, String namep, String surnamep, String catp) {
+		// Esperamos 5 segundo a que carge el DOM porque en algunos equipos falla
+		WebElement dni = driver.findElement(By.name("dni"));
+		dni.click();
+		dni.clear();
+		dni.sendKeys(dnip);
+		WebElement name = driver.findElement(By.name("nombre"));
+		name.click();
+		name.clear();
+		name.sendKeys(namep);
+		WebElement surname = driver.findElement(By.name("apellido"));
+		surname.click();
+		surname.clear();
+		surname.sendKeys(surnamep);
+		WebElement cat = driver.findElement(By.name("categoria"));
+		cat.click();
+		cat.clear();
+		cat.sendKeys(catp);
+		// Pulsar el boton de Alta.
+		By boton = By.className("btn");
+		driver.findElement(boton).click();
+	}
 }
